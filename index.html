@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script> -->
+</head>
+<body>
+    <div class="content">
+        <h1>Elderly player</h1>
+        <div class="player">
+            <video id="myVideo" width="1000" poster="">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <!-- <div id="timebar"></div> -->
+            <!-- <video id="video" width="1000" poster="">
+                <source src="TestVideo.mp4" type="video/mp4">
+            </video> -->
+
+            <div class="controls">
+                <button id="play">play</button>
+                <progress id="progress" max="100" value="0"></progress>
+                <button id="fullScreen">FullScreen</button>
+            </div>
+        </div>
+        <div class="block"></div>
+    </div>
+    <script src="script/control.js"></script>
+</body>
+</html>
