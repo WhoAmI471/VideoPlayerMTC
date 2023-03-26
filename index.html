@@ -6,24 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script> -->
 </head>
 <body>
     <div class="content">
         <h1>Elderly player</h1>
         <div class="player">
-            <video id="myVideo" width="1000" poster="">
+            <video id="myVideo" class="video" width="1000" poster="">
                 <source src="video2.mp4" type="video/mp4">
             </video>
-            <!-- <div id="timebar"></div> -->
-            <!-- <video id="video" width="1000" poster="">
-                <source src="TestVideo.mp4" type="video/mp4">
-            </video> -->
 
             <div class="controls">
-                <button id="play">play</button>
-                <progress id="progress" max="100" value="0"></progress>
-                <button id="fullScreen">FullScreen</button>
+                <div class="timebar">
+                    <progress id="progress" max="100" value="0"></progress>
+                </div>
+                <div class="buttons">
+                    
+                    <div class="play_pause">
+                        <svg id="play" width="78" height="30" viewBox="0 0 78 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4226 82C16.9304 82 13.6151 81.1601 10.6976 79.4803C3.80161 75.5019 0 67.4124 0 56.759V25.241C0 14.5434 3.80161 6.49814 10.6976 2.51971C17.5935 -1.45872 26.4787 -0.707239 35.7617 4.64154L63.036 20.3785C72.2748 25.7272 77.4026 33.0653 77.4026 41.0221C77.4026 48.979 72.3191 56.317 63.036 61.6658L35.7617 77.4027C30.4129 80.4528 25.1967 82 20.4226 82ZM20.4226 6.58655C18.0356 6.58655 15.9137 7.11701 14.0129 8.22213C9.2388 10.9628 6.63072 17.0189 6.63072 25.241V56.7148C6.63072 64.9369 9.2388 70.9488 14.0129 73.7337C18.787 76.5186 25.3294 75.7229 32.4463 71.6119L59.7207 55.875C66.8377 51.7639 70.7719 46.5035 70.7719 40.9779C70.7719 35.4523 66.8377 30.1919 59.7207 26.0809L32.4463 10.344C28.1143 7.86849 24.0474 6.58655 20.4226 6.58655Z" fill="white"/>
+                        </svg>
+                        <svg id="pause" width="83" height="30" viewBox="0 0 83 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M34.85 73.39V8.61C34.85 2.46 32.2533 0 25.6933 0H9.15667C2.59667 0 0 2.46 0 8.61V73.39C0 79.54 2.59667 82 9.15667 82H25.6933C32.2533 82 34.85 79.54 34.85 73.39Z" fill="white"/>
+                            <path d="M82.007 73.39V8.61C82.007 2.46 79.4103 0 72.8503 0H56.3137C49.7992 0 47.157 2.46 47.157 8.61V73.39C47.157 79.54 49.7536 82 56.3137 82H72.8503C79.4103 82 82.007 79.54 82.007 73.39Z" fill="white"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="volume">
+                        <svg id="volume" width="102" height="30" viewBox="0 0 102 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 32.3865V51.1393C4 60.5157 8.68821 65.2039 18.0646 65.2039H24.7688C26.5034 65.2039 28.2381 65.7196 29.7383 66.6104L43.4279 75.1898C55.2422 82.5972 64.9468 77.2058 64.9468 63.2818V20.2441C64.9468 6.27325 55.2422 0.928691 43.4279 8.33607L29.7383 16.9155C28.2381 17.8063 26.5034 18.322 24.7688 18.322H18.0646C8.68821 18.322 4 23.0102 4 32.3865Z" stroke="white" stroke-width="8"/>
+                        <path d="M79.0112 23.0101C87.3562 34.1211 87.3562 49.4047 79.0112 60.5158" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M87.5908 11.2895C101.14 29.3391 101.14 54.1866 87.5908 72.2363" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg> 
+                        <input id="volumeRange" type="range" value="50" min="0" max="100">
+                    </div>
+                    <!-- <button id="fullScreen">fullScreen</button> -->
+                    <div class="fullscreen">
+                        <svg id="fullScreen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25">
+                        <g>
+                            <path d="M21 11.001a.972.972 0 01-.983 1.001c-.553 0-1-.449-1.024-1a34.68 34.68 0 00-.441-4.12l-3.84 3.835a1.003 1.003 0 01-1.416-1.415l3.852-3.85a34.689 34.689 0 00-4.146-.446A1.035 1.035 0 0112 3.984a.972.972 0 011.002-.981c1.725.066 3.386.289 4.66.506 1.098.187 1.647.28 2.099.731.451.45.545 1 .732 2.097.217 1.272.44 2.941.506 4.664zM3 13.003a.972.972 0 01.983-1.001c.554 0 1 .448 1.024 1 .062 1.495.25 2.963.444 4.136l3.836-3.832a1 1 0 111.417 1.416l-3.836 3.832c1.175.194 2.635.382 4.13.444.553.022 1.002.469 1.002 1.022a.972.972 0 01-1.002.981 36.826 36.826 0 01-4.66-.506c-1.098-.187-1.647-.28-2.099-.731-.451-.451-.545-1-.732-2.097a36.872 36.872 0 01-.506-4.664z"></path>
+                        </g>
+                    </svg>
+                </div>
+                </div>
             </div>
         </div>
         <div class="block"></div>

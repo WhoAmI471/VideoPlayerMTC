@@ -1,9 +1,11 @@
 document.querySelector('#play').onclick = play;
+document.querySelector('#pause').onclick = pause;
 document.querySelector('#fullScreen').onclick = fullScreen;
+document.querySelector('#volumeRange').oninput = videoVolume;
 
-// let video;
-let display;
-let progress;
+
+const root = document.querySelector(':root');
+
 
 var video = document.getElementById('myVideo');
 var canvas = document.createElement('canvas');
@@ -11,7 +13,7 @@ var context = canvas.getContext('2d');
 var timebar = document.getElementById('timebar');
 
 // video = document.querySelector('#video');
-progress = document.querySelector('#progress');
+// progress = document.querySelector('#progress');
 
 video.ontimeupdate = progressUpdate;
 progress.onclick = videoRewind;
@@ -25,44 +27,51 @@ video.addEventListener('timeupdate', function() {
 
   if (brightness > 150) {
     handleFlash();
+  } else {
+    setTimeout(DelitBlur,15000)
   }
-
-  // updateTimebar();
 });
 
 
-let count = 0;
-
 function play() {
-    if (!count){
-        video.play();
-        count++;
-    } else {
-        
-        video.pause();
-        count = 0;
-    }
+  video.play();
+
+  root.style.setProperty("--pl", `${0}px`);
+  root.style.setProperty("--pa", `${30}px`);
+}
+
+
+function pause() {
+  video.pause();
+  root.style.setProperty("--pa", `${0}px`);
+  root.style.setProperty("--pl", `${30}px`);
+
 }
 
 function fullScreen() {
 }
 
+function videoVolume() {
+  let v = this.value;
+  video.volume = v / 100;
+}
 
 function progressUpdate(){
-    let dur = video.duration;
-    let cur = video.currentTime;
-    progress.value = (100 * cur) / dur;
+  let dur = video.duration;
+  let cur = video.currentTime;
+
+  progress.value = (100 * cur) / dur;
 }
 
 function videoRewind() {
-    let w = this.offsetWidth;
-    let o = event.offsetX;
+  let w = this.offsetWidth;
+  let o = event.offsetX;
     
-    this.value = 100 * o / w;
+  this.value = 100 * o / w;
 
-    // video.pause();
-    video.currentTime = video.duration * (o/w);
-    // video.play();
+  // video.pause();
+  video.currentTime = video.duration * (o/w);
+  // video.play();
 }
 
 function calculateBrightness(imageData) {
@@ -79,9 +88,13 @@ function calculateBrightness(imageData) {
 function handleFlash() {
   // Действия при обнаружении яркой вспышки света
   console.log("ОПАСНО")
+  
+  var videoWrapper = document.querySelector('.video');
+  videoWrapper.classList.add('contrast');
 }
 
-function updateTimebar() {
-  var progress = video.currentTime / video.duration;
-  timebar.style.width = (progress * 100) + '%';
+function DelitBlur() {
+  var videoWrapper = document.querySelector('.video');
+  videoWrapper.classList.remove('contrast');
 }
+

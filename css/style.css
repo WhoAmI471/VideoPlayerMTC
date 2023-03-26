@@ -19,16 +19,17 @@ body {
     /* margin: 0 auto; */
     width: 1000px;
     position: relative;
-    z-index: 0;
+    z-index: 10;
+    
 }
 
-#timebar {
+.timebar {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 5px;
-    background-color: red;
+    width: 100%;
+    height: 35px;
+    
 }
 
 .controls {
@@ -39,13 +40,14 @@ body {
     z-index: 1;
 
     display: flex;
+    flex-direction: column;
     /* flex-direction: row; */
     /* flex-flow: row wrap; */
 
-    justify-content: space-between;
+    justify-content: end;
 
     width: 1000px;
-    align-items: end;
+    /* align-items: end; */
 
     
     animation: animate_control_unuse 1s forwards;
@@ -56,18 +58,68 @@ body {
 
 }
 
+.buttons {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    bottom: -20px;
+    z-index: 1;
+}
+
 button {
     /* opacity: 1; */
     width: 100px;
     height: 30px;
 }
 
+
 progress {
-    width: 75%;
+    
+    /* стили */
+    width: 100%;
     height: 15px;
     margin-bottom: 8px;
+    border-radius: 15px;
 }
 
+progress::-webkit-progress-bar {
+    
+    /* стили  */
+    /* width: 75%; */
+    height: 5px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+    color: blueviolet;
+    
+}
+    
+progress::-webkit-progress-value {
+    
+    /* стили */
+    /* width: 75%; */
+    height: 15px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+    background-color: blueviolet;
+    
+}
+
+progress::-webkit-progress-bar:hover {
+    position: absolute;
+    top: -5px;
+    height: 10px;
+    
+}
+    
+progress::-moz-progress-bar {
+
+    /* стили */
+    border-radius: 15px;
+
+}
+    
 .block{
     margin-top: -4px;
     width: 100%;
@@ -77,20 +129,76 @@ progress {
     z-index: 100;
 }
 
+.play_pause {
+    position: relative;
+    z-index: 10;
+    background-color: rgb(218, 28, 28);
+}
+
+:root {
+    --pl: 30px;
+    --pa: 0px;
+}
+
+#play{
+    position: absolute;
+    top: 5px;
+    height: var(--pl);
+}
+
+#pause {
+    position: absolute;
+    top: 5px;
+    left: -3px;
+    height: var(--pa);
+}
+
+.volume {
+    transform: translateX(-270px);
+}
+
+#volume{
+    transform: translateY(6px);
+}
+
+
+.fullscreen{
+    width: 50px;
+}
+
+#fullScreen{
+    fill: #FFFFFF;
+    height: 45px;
+}
+
 @keyframes animate_control_unuse {
 	0% {
-        transform: translateY(-10px);
+        transform: translateY(-20px);
 	}
 	100% {
-        transform: translateY(30px);
+        transform: translateY(40px);
 	}
 }
 
 @keyframes animate_control_use {
 	0% {
-        transform: translateY(30px);
+        transform: translateY(40px);
 	}
 	100% {
-        transform: translateY(-10px);
+        transform: translateY(-20px);
 	}
+}
+
+
+.grayscale {
+    filter: grayscale(100%);
+    filter: hue-rotate(90deg);
+}
+
+.video {
+    transition: filter 10s ease-out;
+}
+
+.contrast {
+    filter: brightness(2%) blur(5px); 
 }
