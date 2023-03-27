@@ -44,10 +44,13 @@ video2.addEventListener('timeupdate', function() {
     flashHandled = true;
     count1 += 2;
     handleFlash();
-  } else if (brightness < 150 && flashHandled) {
+  } else if (brightness < 150) {
     if (count1 == count2) {
       DelitBlur();
-      flashHandled = false
+      flashHandled = false;
+
+      count1 = 0;
+      count2 = 0;
     } else{
       count2++;
     }
@@ -58,7 +61,6 @@ video2.addEventListener('timeupdate', function() {
 function play() {
   // если плеер был запущен с самого начала, то первый поток запускаем с задержкой в с.
   if (!isPlay) {
-    // video.play();
     video2.play();
     video2.volume = 0;
     
