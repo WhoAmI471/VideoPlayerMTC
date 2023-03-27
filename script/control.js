@@ -29,6 +29,9 @@ progress.onclick = videoRewind;
 let flashHandled = false; 
 
 
+let count1 = 0;
+let count2 = 0;
+
 // проверяет второй поток, и накладывает фильтр на первый, 
 // если значение яркости превысило допустимое.
 video2.addEventListener('timeupdate', function() {
@@ -38,19 +41,16 @@ video2.addEventListener('timeupdate', function() {
   var brightness = calculateBrightness(imageData);
 
   if (brightness > 150 && !flashHandled) {
-    setTimeout(function() { // задержка срабатывания фильтра для основного потока
-      handleFlash();
-      flashHandled = true;
-    }, 
-      1000 // 1с. потому что основной видео поток запускается на секунду позже
-    );
-  } else {
-    setTimeout(function() {
+    flashHandled = true;
+    count1 += 2;
+    handleFlash();
+  } else if (brightness < 150 && flashHandled) {
+    if (count1 == count2) {
       DelitBlur();
       flashHandled = false
-    }, 
-      15000 // 15с.
-    );
+    } else{
+      count2++;
+    }
   }
 });
 
@@ -58,12 +58,14 @@ video2.addEventListener('timeupdate', function() {
 function play() {
   // если плеер был запущен с самого начала, то первый поток запускаем с задержкой в с.
   if (!isPlay) {
+    // video.play();
     video2.play();
     video2.volume = 0;
+    
     setTimeout(function() {
       video.play()
-    }, 
-    1000
+      }, 
+      500
     );
     isPlay = true;
   } else { // иначе, запускаем два потока одновременно
@@ -101,11 +103,11 @@ function progressUpdate(){ // для первого потока
   
   progress1 = progress.value;
 
-  console.log("1: " + progress.value);
+  console.log("1: " + progress1);
 
   var hours = Math.floor(progress1 / 60 / 60);
   var minutes = Math.floor(progress1 / 60) - (hours * 60);
-  var seconds = (progress1 % 60).toFixed(0);
+  var seconds = Math.round(progress1 % 60);
   
   
   var formatted = hours + ':' + minutes + ':' + seconds;
@@ -120,7 +122,7 @@ function progressUpdate2(){ // для второго потока
   
   var hours2 = Math.floor(progress2 / 60 / 60);
   var minutes2 = Math.floor(progress2 / 60) - (hours2 * 60);
-  var seconds2 = (progress2 % 60).toFixed(0);
+  var seconds2 = Math.round(progress2 % 60);
   
   var formatted2 = hours2 + ':' + minutes2 + ':' + seconds2;
 
@@ -135,7 +137,7 @@ function videoRewind() {
 
   // video.pause();
   video.currentTime = video.duration * (o/w);
-  video2.currentTime = video.duration * (o/w) + 1;
+  video2.currentTime = video.duration * (o/w) + 0.5;
   // video2.play();
 }
 
@@ -152,12 +154,13 @@ function calculateBrightness(imageData) {
 
 function handleFlash() {
   // Действия при обнаружении яркой вспышки света
-  console.log("ОПАСНО")
   
   if(!flashHandled){
+    return;
+  }
+    console.log("ОПАСНО")
     var videoWrapper = document.querySelector('.video');
     videoWrapper.classList.add('contrast');
-  }
 }
 
 function DelitBlur() {
