@@ -6,6 +6,7 @@
 
 body {
     width: 100%;
+    background-color: #FFFFFF;
 }
 
 .content {
@@ -133,6 +134,18 @@ progress::-moz-progress-bar {
     position: relative;
     z-index: 10;
     background-color: rgb(218, 28, 28);
+    width: 10%;
+}
+
+.right{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.left {
+    width: 50%;
 }
 
 :root {
@@ -154,13 +167,40 @@ progress::-moz-progress-bar {
 }
 
 .volume {
-    transform: translateX(-270px);
+    transform: translateX(70px);
+}
+
+#volumeRange {
+    width: 30%;
+    margin: 0;
+    padding: 0;
 }
 
 #volume{
     transform: translateY(6px);
 }
 
+#setting{
+    height: 40px;
+    fill: #FFFFFF;
+}
+
+.subt {
+    width: 40px;
+    height: 50px;
+}
+
+#exclude{
+    height: 50px;
+}
+
+.sett{
+    width: 40px;
+}
+
+#setting{
+    height: 50px;
+}
 
 .fullscreen{
     width: 50px;
@@ -191,14 +231,14 @@ progress::-moz-progress-bar {
 
 
 .grayscale {
-    filter: grayscale(100%);
+    filter: grayscale(1%);
     filter: hue-rotate(90deg);
 }
 
 .video {
-    transition: filter 10s ease-out;
+    /* transition: filter 10s ease-out; */
 }
 
 .contrast {
-    filter: brightness(2%) blur(5px); 
+    filter: brightness(70%) blur(5px); 
 }
