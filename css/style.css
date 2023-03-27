@@ -235,9 +235,9 @@ progress::-moz-progress-bar {
     filter: hue-rotate(90deg);
 }
 
-.video {
-    /* transition: filter 10s ease-out; */
-}
+/* .video {
+    transition: filter 10s ease-out;
+} */
 
 .contrast {
     filter: brightness(70%) blur(5px); 
