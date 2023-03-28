@@ -149,10 +149,13 @@ progress::-moz-progress-bar {
     width: 50%;
 }
 
-:root {
-    --pl: 30px;
-    --pa: 0px;
-}
+/* filter: hue-rotate(0deg);красный цвет
+filter: hue-rotate(30deg);оранжевый цвет
+filter: hue-rotate(60deg);желтый цвет
+filter: hue-rotate(120deg);зеленый цвет
+filter: hue-rotate(180deg);Голубой цвет
+filter: hue-rotate(240deg);синий цвет
+filter: hue-rotate(300deg);фиолетовый цвет  */
 
 #play{
     position: absolute;
@@ -232,6 +235,7 @@ progress::-moz-progress-bar {
     height: 45px;
 }
 
+
 @keyframes animate_control_unuse {
 	0% {
         transform: translateY(-20px);
@@ -260,31 +264,89 @@ progress::-moz-progress-bar {
     transition: filter 10s ease-out;
 } */
 
-
-/* .myVideo.contrast {
-    filter: brightness(100%);
-    animation: fade-in 1s ease-out forwards;
-} */
-  
-@keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-}
-
 .contrast {
-    animation: blur 6s ease-out; 
+    filter: brightness(30%);
 }
 
-
-@keyframes blur {
-	0% {
-        filter: brightness(30%); 
-	}
-	100% {
-        filter: none; 
-	}
+.contrast-remove {
+    filter: brightness(100%);
+    transition: filter 3s ease-out; 
 }
+
+/* тут был Егор */
+/*настройки меню, расположения кнопок и тд*/
+.setupMenu{
+    display: grid;
+   grid-template-columns: repeat(4,250px);
+}
+.setupMenu h2{
+    padding-bottom: 66px;
+    text-align: center;
+}
+.subtitles{
+    display: flex;
+    flex-direction: column;
+}
+
+.slidecontainer{
+    /*настройка слайдеров и текста*/
+    display: flex;
+    flex-direction: column;
+   
+}
+.font_size{
+    display: flex;
+    flex-direction: column;
+}
+.color_blindness{
+    /*настройка меню дальтонизм(расположение)*/
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    /*настроить сами кнопки*/
+    background-color: gray; 
+    border: 1px solid black; 
+    color: white; 
+    padding: 10px 24px; 
+    cursor: pointer; 
+    width: 90%; 
+}
+button:hover,
+button:focus{
+    background-color: lightgray;
+    color: black;
+}
+
+:root {
+    --pl: 30px;
+    --pa: 0px;
+    --brt: 1; /*100%*/
+    --mon: 0; /*%*/
+    --dix: 1; /*%*/
+    --colorRotate: 0; /*deg*/
+}
+
+.bright{
+    filter: 
+    brightness(var(--brt)) 
+    grayscale(var(--mon)) 
+    saturate(var(--dix)) 
+    hue-rotate(var(--colorRotate))
+    ;
+}
+
+/*настройка для ползунков*/
+/*пресеты яркости*/
+
+/*     Палитра
+filter: hue-rotate(0deg);красный цвет
+filter: hue-rotate(30deg);оранжевый цвет
+filter: hue-rotate(60deg);желтый цвет
+filter: hue-rotate(120deg);зеленый цвет
+filter: hue-rotate(180deg);Голубой цвет
+filter: hue-rotate(240deg);синий цвет
+filter: hue-rotate(300deg);фиолетовый цвет */
+
+

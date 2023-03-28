@@ -12,9 +12,59 @@
         <h1>Elderly player</h1>
         <p id="timeout"></p>
         <p id="timeout2"></p>
+
+        
+        <div class="setupMenu">
+
+            <div class="subtitles">
+                <h2>Безопасный режим просмотра</h2>
+            <button>Включить</button>
+            <button>Выключить</button>
+            </div>
+
+            <!-- настроить изначальное положение ползунков, счиывать их и переносить значения в класс(сделать несколько классов с определенными настройками), настроить кнопки масштаба, перенести все на новую версию плеера(в гит лежит) -->
+            <div class="color_correction">
+                <h2>Цветокорекция</h2>
+                <div class="slidecontainer">
+                    <span>яркость</span>
+                    <input  type="range" min="0" max="100" value="100"  class="brightness" id="brightness" oninput="change_bri()">
+                    <output type="range" id="brightnes_value">100</output>
+                </div>
+                <div class="slidecontainer">
+                    <span>контраст</span>
+                    <input  type="range" step="10" min="0" max="100" value="50"  class="contrast_" id="contrast" oninput="contrast_value(value)">
+                    <output type="range" id="contrast_value">50</output>
+                </div>
+                <div class="slidecontainer">
+                    <span>насыщенность</span>
+                    <input  type="range" min="1" max="100" value="50"  class="saturation" id="saturation" oninput="saturation_value(value)">
+                    <output type="range" id="saturation_value">50</output>
+                </div>
+                <div class="slidecontainer">
+                    <span>резкость изображения</span>
+                    <input  type="range" min="1" max="100" value="50"  class="image_sharpness" id="sharpness" oninput="sharpness_value(value)">
+                    <output type="range" id="sharpness_value">50</output>
+                </div>
+            </div>
+
+            <div class="font_size">
+                <h2>Размер интерфейса</h2>
+                <input  type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+
+            <div class="color_blindness">
+                <h2>Дальтонизм</h2>
+            <button id="mon" class="mon"  onclick="mon()">Монохромазия</button>
+            <button id="dix" class="dix" onclick="dix()">Дихромазия</button>
+            <button id="trip" class="trip" onclick="trip()">Тританопия</button>
+            <button id="deit" class="deit" onclick="deit()">Дейтеранопия</button>
+            <button id="prat" class="prat" onclick="prat()">Протанопия</button>
+            </div>
+        </div>
+
         <div class="player">
             <video id="myVideo" class="video" width="1000" poster="">
-                <source src="video2.mp4" type="video/mp4">
+                <source src="video3.mp4" type="video/mp4">
             </video>
 
             <div class="controls">
@@ -66,7 +116,7 @@
         </div>
         <div class="block"></div>
             <video id="myVideo_flow2" class="video2" width="1000" poster="">
-                <source src="video2.mp4" type="video/mp4">
+                <source src="video3.mp4" type="video/mp4">
             </video>
     </div>
     <script src="script/control.js"></script>

@@ -162,11 +162,79 @@ function handleFlash() {
   }
     console.log("ОПАСНО")
     var videoWrapper = document.querySelector('.video');
+    videoWrapper.classList.remove('contrast-remove');
     videoWrapper.classList.add('contrast');
 }
 
 function DelitBlur() {
   var videoWrapper = document.querySelector('.video');
   videoWrapper.classList.remove('contrast');
+  videoWrapper.classList.add('contrast-remove');
 }
 
+
+// чать Егора
+
+/*кнопки для пресетов дальтонизма */
+function mon(){
+  clear();
+  root.style.setProperty("--mon", `${100}%`);
+}
+
+function dix(){
+  clear();
+  root.style.setProperty("--dix", `${50}%`);
+}
+
+function trip(){
+  clear();
+  root.style.setProperty("--colorRotate", `120deg`);
+}
+
+function deit(){
+  clear();
+  root.style.setProperty("--colorRotate", `240deg`);
+}
+
+function prat(){
+  clear();
+  root.style.setProperty("--colorRotate", `120deg`);
+}
+
+function clear(){
+  root.style.setProperty("--mon", `${0}%`);
+  root.style.setProperty("--dix", `${1}`);
+  root.style.setProperty("--colorRotate", `${0}deg`);
+}
+/*работа с ползунками */
+/*яркость */
+
+function change_bri(){
+  var bri = document.querySelector("#brightness");
+  var n = document.querySelector("#brightnes_value")
+  var number = n.value/100; 
+  n.value = bri.value;
+
+  video.classList.add("bright");
+  root.style.setProperty("--brt", `${number}`)
+  console.log(number);
+}
+
+/*контраст*/
+function contrast_value(cont){
+  var output = document.querySelector('#contrast_value');
+  output.value = cont;
+  
+}
+/*насыщенность*/
+function saturation_value(sat){
+  var output = document.querySelector('#saturation_value');
+  output.value = sat;
+}
+/*резкость изображения*/
+function sharpness_value(sha){
+  var output = document.querySelector('#sharpness_value');
+  output.value = sha;
+}
+
+/*размер интерфейса */
