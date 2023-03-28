@@ -29,13 +29,25 @@ progress.onclick = videoRewind;
 let flashHandled = false; 
 
 let videoHandled = false;
-document.querySelector('#onBtn').addEventListener('click', function() {
-  videoHandled = true;
-});
 
-document.querySelector('#offBtn').addEventListener('click', function() {
+
+function OnBtn() {
+  videoHandled = true;
+}
+
+
+function OffBtn() {
   videoHandled = false; // сбрасываем флаг, что обработка видео запущена
-});
+}
+
+
+// document.querySelector('#onBtn').addEventListener('click', function() {
+//   videoHandled = true;
+// });
+
+// document.querySelector('#offBtn').addEventListener('click', function() {
+//   videoHandled = false; // сбрасываем флаг, что обработка видео запущена
+// });
 
 
 let count1 = 0;
@@ -47,6 +59,7 @@ video2.addEventListener('timeupdate', function() {
   if (!videoHandled) { // проверяем, не была ли нажата кнопка "stopButton"
     return; // если была нажата, выходим из функции
   }
+  console.log("ВВВВ")
   context.drawImage(video2, 0, 0, canvas.width, canvas.height);
 
   var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -60,7 +73,7 @@ video2.addEventListener('timeupdate', function() {
     if (count1 == count2) {
       DelitBlur();
       flashHandled = false;
-
+     
       count1 = 0;
       count2 = 0;
     } else{

@@ -265,11 +265,13 @@ filter: hue-rotate(300deg);фиолетовый цвет  */
 } */
 
 .contrast {
+    /*если будут какие-то проблемы, то я мог тут накосячит с переменными(я объеденил их для ползунка и для пресетов)*/
     filter: 
-    brightness(var(--brt)) 
     grayscale(var(--mon)) 
     saturate(var(--dix)) 
     hue-rotate(var(--colorRotate))
+    brightness(var(--brt))
+    contrast(var(--cont)) 
     ;
 }
 
@@ -279,59 +281,88 @@ filter: hue-rotate(300deg);фиолетовый цвет  */
 } */
 
 /* тут был Егор */
-/*настройки меню, расположения кнопок и тд*/
+/*настройки меню*/
 .setupMenu{
-    display: grid;
-   grid-template-columns: repeat(4,250px);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
-.setupMenu h2{
-    padding-bottom: 66px;
-    text-align: center;
-}
+/*настройка рамок*/
 .subtitles{
-    display: flex;
-    flex-direction: column;
-}
-
-.slidecontainer{
-    /*настройка слайдеров и текста*/
-    display: flex;
-    flex-direction: column;
-   
-}
-.font_size{
-    display: flex;
-    flex-direction: column;
+  border-radius: 30px 0 0 30px;
 }
 .color_blindness{
-    /*настройка меню дальтонизм(расположение)*/
+    border-radius: 0 30px 30px 0;
+}
+/* общая настройка блоков */
+.subtitles,
+.color_correction,
+.font_size,
+.color_blindness{
+background-color: #888888;
+width: 250px;
+height: 350px;
+}
+h2{
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 66px;
+}
+button{
+    border: none;
+    background-color:#888888 ;
+    color: #FFFFFF;
+    width: 250px;
+    height: 40px;
+}
+/* настройка слайдеров чтобы все было в колонку */
+.slidecontainer{
     display: flex;
     flex-direction: column;
+    text-align: center;
+}
+span{
+    color: #FFFFFF;
+    size: 20px;
+    line-height: 24.2px;
+}
+output{
+    color: #FFFFFF;
+   font-weight: 600;
+    size: 20px;
+    line-height: 24.2px;
+}
+button:hover{
+    background: #7E7E7E;
+}
+/*сделан очень кустарно после чека переделать*/
+#myRange{
+    margin-left: 80px;
+    margin-top: 60px;
+    transform: rotate(270deg);
+}
+.subtitles:hover,
+.color_correction:hover,
+.font_size:hover,
+.color_blindness:hover{
+    background-color:#B2B2B2ED ;
+}
+button:hover{
+    background-color:#B2B2B2ED ;
 }
 
-button{
-    /*настроить сами кнопки*/
-    background-color: gray; 
-    border: 1px solid black; 
-    color: white; 
-    padding: 10px 24px; 
-    cursor: pointer; 
-    width: 90%; 
-}
-button:hover,
-button:focus{
-    background-color: lightgray;
-    color: black;
-}
 
 :root {
     --pl: 30px;
     --pa: 0px;
-    --brt: 1; /*100%*/
-    --mon: 0; /*%*/
-    --dix: 1; /*%*/
+    --mon: 0; /* % */
+    --dix: 1; /* % */
     --colorRotate: 0; /*deg*/
+    --brt: 1; /*100%*/
+    --cont:1;/*100%*/
+    --sat: 1; /*%*/
 }
+
 
 /* .bright{
 } */
@@ -349,3 +380,14 @@ filter: hue-rotate(240deg);синий цвет
 filter: hue-rotate(300deg);фиолетовый цвет */
 
 
+/* настройки модалки */
+
+.vmodal{
+    opacity: 0;
+    z-index: -1;
+    margin-bottom: 50px;
+}
+.vmodal.open{
+    opacity: 1;
+    z-index: 1000;
+}
