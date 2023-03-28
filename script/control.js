@@ -204,7 +204,7 @@ function dix(){
 
 function trip(){
   clear();
-  root.style.setProperty("--colorRotate", `120deg`);
+  root.style.setProperty("--colorRotate", `60deg`);
 }
 
 function deit(){
@@ -217,19 +217,25 @@ function prat(){
   root.style.setProperty("--colorRotate", `120deg`);
 }
 
-function clear(){
-  root.style.setProperty("--mon", `${0}%`);
-  root.style.setProperty("--dix", `${1}`);
-  root.style.setProperty("--colorRotate", `${0}deg`);
+function normal(){
+  root.style.setProperty("--mon", "1%");
+  root.style.setProperty("--dix", "1");
+  root.style.setProperty("--colorRotate", "1deg");
 }
-/*работа с ползунками */
-/*яркость */
 
+function clear(){
+  root.style.setProperty("--mon", "1%");
+  root.style.setProperty("--dix", "1");
+  root.style.setProperty("--colorRotate", "1deg");
+}
+
+/*яркость */
+// менял тут!
 function change_bri(){
   var bri = document.querySelector("#brightness");
   var n = document.querySelector("#brightnes_value")
-  var number = n.value/100; 
-  n.value = bri.value;
+  var number = bri.value/100; 
+  n.value = bri.value+"%";
 
   root.style.setProperty("--brt", `${number}`)
   console.log(number);
@@ -239,10 +245,9 @@ function change_bri(){
 function contrast_value(){
   var cont = document.querySelector("#contrast");
   var m = document.querySelector("#contrast_value")
-  var number = m.value/100; 
-  m.value = cont.value;
+  var number = cont.value/100; 
+  m.value = cont.value+"%";
   
-  video.classList.add("bright");
   root.style.setProperty("--cont", `${number}`)
   console.log(number);
 }
@@ -251,9 +256,10 @@ function contrast_value(){
 function saturation_value(){
   var sat = document.querySelector("#saturation");
   var b = document.querySelector("#saturation_value")
-  var number = b.value/100; 
-  b.value = sat.value;
-  video.classList.add("bright");
+  var number = sat.value/100; 
+  b.value = sat.value+'%';
+ 
+  
   root.style.setProperty("--dix", `${number}`)
   console.log(number);
 }
@@ -262,11 +268,12 @@ function saturation_value(){
 function sharpness_value(){
   var sha = document.querySelector("#sharpness");
   var c = document.querySelector("#sharpness_value")
-  var number = c.value/100; 
-  c.value = sha.value;
-  video.classList.add("bright");
-  root.style.setProperty("--sha", `${number}`)
+  var number = sha.value/100; 
+  c.value = sha.value+"%";
+  
+  root.style.setProperty("--sha", `${number}px`)
   console.log(number);
 }
+
 
 /*размер интерфейса */
