@@ -236,20 +236,37 @@ function change_bri(){
 }
 
 /*контраст*/
-function contrast_value(cont){
-  var output = document.querySelector('#contrast_value');
-  output.value = cont;
+function contrast_value(){
+  var cont = document.querySelector("#contrast");
+  var m = document.querySelector("#contrast_value")
+  var number = m.value/100; 
+  m.value = cont.value;
   
+  video.classList.add("bright");
+  root.style.setProperty("--cont", `${number}`)
+  console.log(number);
 }
+
 /*насыщенность*/
-function saturation_value(sat){
-  var output = document.querySelector('#saturation_value');
-  output.value = sat;
+function saturation_value(){
+  var sat = document.querySelector("#saturation");
+  var b = document.querySelector("#saturation_value")
+  var number = b.value/100; 
+  b.value = sat.value;
+  video.classList.add("bright");
+  root.style.setProperty("--dix", `${number}`)
+  console.log(number);
 }
+
 /*резкость изображения*/
-function sharpness_value(sha){
-  var output = document.querySelector('#sharpness_value');
-  output.value = sha;
+function sharpness_value(){
+  var sha = document.querySelector("#sharpness");
+  var c = document.querySelector("#sharpness_value")
+  var number = c.value/100; 
+  c.value = sha.value;
+  video.classList.add("bright");
+  root.style.setProperty("--sha", `${number}`)
+  console.log(number);
 }
 
 /*размер интерфейса */

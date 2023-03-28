@@ -340,6 +340,7 @@ output{
 button:hover{
     background: #7E7E7E;
 }
+
 /*сделан очень кустарно после чека переделать*/
 #myRange{
     margin-left: 80px;
