@@ -41,15 +41,6 @@ function OffBtn() {
 }
 
 
-// document.querySelector('#onBtn').addEventListener('click', function() {
-//   videoHandled = true;
-// });
-
-// document.querySelector('#offBtn').addEventListener('click', function() {
-//   videoHandled = false; // сбрасываем флаг, что обработка видео запущена
-// });
-
-
 let count1 = 0;
 let count2 = 0;
 
@@ -59,7 +50,7 @@ video2.addEventListener('timeupdate', function() {
   if (!videoHandled) { // проверяем, не была ли нажата кнопка "stopButton"
     return; // если была нажата, выходим из функции
   }
-  console.log("ВВВВ")
+  // console.log("ВВВВ")
   context.drawImage(video2, 0, 0, canvas.width, canvas.height);
 
   var imageData = context.getImageData(0, 0, canvas.width, canvas.height);

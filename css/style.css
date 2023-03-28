@@ -149,14 +149,6 @@ progress::-moz-progress-bar {
     width: 50%;
 }
 
-/* filter: hue-rotate(0deg);красный цвет
-filter: hue-rotate(30deg);оранжевый цвет
-filter: hue-rotate(60deg);желтый цвет
-filter: hue-rotate(120deg);зеленый цвет
-filter: hue-rotate(180deg);Голубой цвет
-filter: hue-rotate(240deg);синий цвет
-filter: hue-rotate(300deg);фиолетовый цвет  */
-
 #play{
     position: absolute;
     top: 5px;
@@ -205,10 +197,11 @@ filter: hue-rotate(300deg);фиолетовый цвет  */
     fill: #FFFFFF;
 }
 
-.subt {
+.item {
     width: 50px;
     height: 40px;
     align-self: center;
+    margin: auto 5px;
 }
 
 #exclude{
@@ -222,6 +215,17 @@ filter: hue-rotate(300deg);фиолетовый цвет  */
 }
 
 #setting{
+    height: 100%;
+    width: 100%;
+}
+
+
+.eye{
+    width: 50px;
+    height: 50px;
+}
+
+#eye{
     height: 100%;
     width: 100%;
 }
@@ -294,6 +298,7 @@ filter: hue-rotate(300deg);фиолетовый цвет  */
 .color_blindness{
     border-radius: 0 30px 30px 0;
 }
+
 /* общая настройка блоков */
 .subtitles,
 .color_correction,
