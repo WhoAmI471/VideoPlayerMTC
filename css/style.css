@@ -265,13 +265,18 @@ filter: hue-rotate(300deg);фиолетовый цвет  */
 } */
 
 .contrast {
-    filter: brightness(30%);
+    filter: 
+    brightness(var(--brt)) 
+    grayscale(var(--mon)) 
+    saturate(var(--dix)) 
+    hue-rotate(var(--colorRotate))
+    ;
 }
 
-.contrast-remove {
-    filter: brightness(100%);
+/* .contrast-remove {
+    filter: brightness(1);
     transition: filter 3s ease-out; 
-}
+} */
 
 /* тут был Егор */
 /*настройки меню, расположения кнопок и тд*/
@@ -328,14 +333,8 @@ button:focus{
     --colorRotate: 0; /*deg*/
 }
 
-.bright{
-    filter: 
-    brightness(var(--brt)) 
-    grayscale(var(--mon)) 
-    saturate(var(--dix)) 
-    hue-rotate(var(--colorRotate))
-    ;
-}
+/* .bright{
+} */
 
 /*настройка для ползунков*/
 /*пресеты яркости*/

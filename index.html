@@ -12,14 +12,13 @@
         <h1>Elderly player</h1>
         <p id="timeout"></p>
         <p id="timeout2"></p>
-
         
         <div class="setupMenu">
 
             <div class="subtitles">
                 <h2>Безопасный режим просмотра</h2>
-            <button>Включить</button>
-            <button>Выключить</button>
+            <button id="onBtn">Включить</button>
+            <button id="offBtn">Выключить</button>
             </div>
 
             <!-- настроить изначальное положение ползунков, счиывать их и переносить значения в класс(сделать несколько классов с определенными настройками), настроить кнопки масштаба, перенести все на новую версию плеера(в гит лежит) -->
@@ -63,7 +62,7 @@
         </div>
 
         <div class="player">
-            <video id="myVideo" class="video" width="1000" poster="">
+            <video id="myVideo" class="video contrast" width="1000" poster="">
                 <source src="video3.mp4" type="video/mp4">
             </video>
 

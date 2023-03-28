@@ -28,6 +28,15 @@ progress.onclick = videoRewind;
 // флаг, чтобы функция не срабатывала много раз за секунду
 let flashHandled = false; 
 
+let videoHandled = false;
+document.querySelector('#onBtn').addEventListener('click', function() {
+  videoHandled = true;
+});
+
+document.querySelector('#offBtn').addEventListener('click', function() {
+  videoHandled = false; // сбрасываем флаг, что обработка видео запущена
+});
+
 
 let count1 = 0;
 let count2 = 0;
@@ -35,6 +44,9 @@ let count2 = 0;
 // проверяет второй поток, и накладывает фильтр на первый, 
 // если значение яркости превысило допустимое.
 video2.addEventListener('timeupdate', function() {
+  if (!videoHandled) { // проверяем, не была ли нажата кнопка "stopButton"
+    return; // если была нажата, выходим из функции
+  }
   context.drawImage(video2, 0, 0, canvas.width, canvas.height);
 
   var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -163,12 +175,12 @@ function handleFlash() {
     console.log("ОПАСНО")
     var videoWrapper = document.querySelector('.video');
     videoWrapper.classList.remove('contrast-remove');
-    videoWrapper.classList.add('contrast');
+    root.style.setProperty("--brt", `${30}%`);
 }
 
 function DelitBlur() {
   var videoWrapper = document.querySelector('.video');
-  videoWrapper.classList.remove('contrast');
+  change_bri();
   videoWrapper.classList.add('contrast-remove');
 }
 
@@ -215,7 +227,6 @@ function change_bri(){
   var number = n.value/100; 
   n.value = bri.value;
 
-  video.classList.add("bright");
   root.style.setProperty("--brt", `${number}`)
   console.log(number);
 }
