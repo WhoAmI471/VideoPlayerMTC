@@ -15,7 +15,7 @@ function _createModal(options){
 
     <!-- настроить изначальное положение ползунков, счиывать их и переносить значения в класс(сделать несколько классов с определенными настройками), настроить кнопки масштаба, перенести все на новую версию плеера(в гит лежит) -->
     <div class="color_correction">
-        <h2>Цветокорекция</h2>
+        <h2>Цветокорекця</h2>
         <div class="slidecontainer">
             <span>яркость</span>
             <input  type="range" min="0" max="100" value="100"  class="brightness" id="brightness" oninput="change_bri()">
